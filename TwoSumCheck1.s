@@ -1,6 +1,6 @@
     .data
 nums:       .word   0,1,2,3,4,5,6,7
-target:     .word   13
+target:     .word   1
 result1:    .word   -1
 result2:    .word   -1
 n:          .word   8
@@ -15,6 +15,7 @@ start:
 startLoop1:
     DADDI   r3, r0, 0                   ; for(int i = 0...)
     DADDI   r4, r0, nums                ; pointer to first element in outer loop
+    BEQ     r3, r1, end                 ; if(i == numsSize) jump to end
 
 startLoop2:
     DADDI   r5, r3, 1                   ; for(int j = i + 1...)
@@ -24,17 +25,17 @@ startLoop2:
 
 loop2:
     LD      r8, 0(r6)                   ; load nums[j]
-    DADD    r9, r7, r8                  ; sum = nums[i] + nums[j]      1 RAW STALL
-    BEQ     r9, r2, found               ; if(sum == target) -> found   2 RAW STALL
+    DADD    r9, r7, r8                  ; sum = nums[i] + nums[j]      
+    BEQ     r9, r2, found               ; if(sum == target) -> found
     DADDI   r5, r5, 1                   ; else increment j
     DADDI   r6, r6, 8                   ; move to next element
     BNE     r5, r1, loop2               ; if(j != n) -> inner loop 
 
 loop1:
-    DADDI   r3, r3, 1                   ; increment i
-    DADDI   r4, r4, 8                   ; move to next element
-    BNE     r3, r1, startLoop2          ; if(i != n) -> loop2
-    BEQ     r3, r1, end                 ; else -> end
+    DADDI   r3, r3, 1                   ; else increment i
+    DADDI   r4, r4, 8                   ; else move to next element
+    BEQ     r3, r1, end                 ; if(i == numsSize) jump to end
+    J       startLoop2                  ; jump to startLoop2
 
 found:
     SD     r3, 0(r10)                   ; save i
@@ -42,4 +43,5 @@ found:
 
 end:
     HALT                                ; end
+
 

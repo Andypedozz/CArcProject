@@ -1,6 +1,6 @@
     .data
 nums:       .word   0,1,2,3,4,5,6,7
-target:     .word   1
+target:     .word   13
 result1:    .word   -1
 result2:    .word   -1
 n:          .word   8

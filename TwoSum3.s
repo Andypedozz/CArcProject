@@ -1,6 +1,6 @@
     .data
 nums:       .word   0,1,2,3,4,5,6,7
-target:     .word   1
+target:     .word   13
 result1:    .word   -1
 result2:    .word   -1
 n:          .word   8
@@ -25,54 +25,61 @@ startLoop2:
 
 loop2:
     LD      r8, 0(r6)                   ; load nums[j]
-    DADD    r9, r7, r8                  ; sum = nums[i] + nums[j]      1 
-    BEQ     r9, r2, found               ; if(sum == target) -> found   2 
+    DADD    r9, r7, r8                  ; sum = nums[i] + nums[j]       
+    BEQ     r9, r2, found               ; if(sum == target) -> found    
     DADDI   r5, r5, 1                   ; else increment j
-    DADDI   r6, r4, 8                   ; move to next element
+    DADDI   r6, r6, 8                   ; move to next element
     BEQ     r5, r1, loop1               ; if(j != n) -> inner loop
 
     LD      r8, 0(r6)                   ; load nums[j]
-    DADD    r9, r7, r8                  ; sum = nums[i] + nums[j]      
-    BEQ     r9, r2, found               ; if(sum == target) -> found   
+    DADD    r9, r7, r8                  ; sum = nums[i] + nums[j]       
+    BEQ     r9, r2, found               ; if(sum == target) -> found    
     DADDI   r5, r5, 1                   ; else increment j
-    DADDI   r6, r4, 8                   ; move to next element
+    DADDI   r6, r6, 8                   ; move to next element
     BEQ     r5, r1, loop1               ; if(j != n) -> inner loop
 
     LD      r8, 0(r6)                   ; load nums[j]
-    DADD    r9, r7, r8                  ; sum = nums[i] + nums[j]      
-    BEQ     r9, r2, found               ; if(sum == target) -> found   
+    DADD    r9, r7, r8                  ; sum = nums[i] + nums[j]       
+    BEQ     r9, r2, found               ; if(sum == target) -> found    
     DADDI   r5, r5, 1                   ; else increment j
-    DADDI   r6, r4, 8                   ; move to next element
+    DADDI   r6, r6, 8                   ; move to next element
     BEQ     r5, r1, loop1               ; if(j != n) -> inner loop
 
     LD      r8, 0(r6)                   ; load nums[j]
-    DADD    r9, r7, r8                  ; sum = nums[i] + nums[j]      
-    BEQ     r9, r2, found               ; if(sum == target) -> found   
+    DADD    r9, r7, r8                  ; sum = nums[i] + nums[j]       
+    BEQ     r9, r2, found               ; if(sum == target) -> found    
     DADDI   r5, r5, 1                   ; else increment j
-    DADDI   r6, r4, 8                   ; move to next element
+    DADDI   r6, r6, 8                   ; move to next element
     BEQ     r5, r1, loop1               ; if(j != n) -> inner loop
 
     LD      r8, 0(r6)                   ; load nums[j]
-    DADD    r9, r7, r8                  ; sum = nums[i] + nums[j]      
-    BEQ     r9, r2, found               ; if(sum == target) -> found   
+    DADD    r9, r7, r8                  ; sum = nums[i] + nums[j]       
+    BEQ     r9, r2, found               ; if(sum == target) -> found    
     DADDI   r5, r5, 1                   ; else increment j
-    DADDI   r6, r4, 8                   ; move to next element
+    DADDI   r6, r6, 8                   ; move to next element
     BEQ     r5, r1, loop1               ; if(j != n) -> inner loop
 
     LD      r8, 0(r6)                   ; load nums[j]
-    DADD    r9, r7, r8                  ; sum = nums[i] + nums[j]      
-    BEQ     r9, r2, found               ; if(sum == target) -> found   
+    DADD    r9, r7, r8                  ; sum = nums[i] + nums[j]       
+    BEQ     r9, r2, found               ; if(sum == target) -> found    
     DADDI   r5, r5, 1                   ; else increment j
-    DADDI   r6, r4, 8                   ; move to next element
+    DADDI   r6, r6, 8                   ; move to next element
     BEQ     r5, r1, loop1               ; if(j != n) -> inner loop
 
     LD      r8, 0(r6)                   ; load nums[j]
-    DADD    r9, r7, r8                  ; sum = nums[i] + nums[j]      
-    BEQ     r9, r2, found               ; if(sum == target) -> found 
+    DADD    r9, r7, r8                  ; sum = nums[i] + nums[j]       
+    BEQ     r9, r2, found               ; if(sum == target) -> found    
     DADDI   r5, r5, 1                   ; else increment j
-    DADDI   r6, r4, 8                   ; move to next element
+    DADDI   r6, r6, 8                   ; move to next element
     BEQ     r5, r1, loop1               ; if(j != n) -> inner loop
-    
+
+    LD      r8, 0(r6)                   ; load nums[j]
+    DADD    r9, r7, r8                  ; sum = nums[i] + nums[j]       
+    BEQ     r9, r2, found               ; if(sum == target) -> found    
+    DADDI   r5, r5, 1                   ; else increment j
+    DADDI   r6, r6, 8                   ; move to next element
+    BEQ     r5, r1, loop1               ; if(j != n) -> inner loop
+
 loop1:
     DADDI   r3, r3, 1                   ; else increment i
     DADDI   r4, r4, 8                   ; else move to next element
